@@ -1,0 +1,76 @@
+Project Root (EduNexusProject)
+              └── src/main/java
+                └── com/edunexus
+                      ├── EduNexusApplication.java
+
+    │           ├── controller
+    │           │   ├── ChatController.java
+    │           │   ├── MentorController.java
+    │           │   ├── NotificationController.java
+    │           │   ├── ReportController.java
+    │           │   ├── SessionRequestController.java
+    │           │   ├── UserController.java (optional)
+    │           │   └── ItemController.java (optional)
+
+    │           ├── entity
+    │           │   ├── Category.java
+    │           │   ├── Conversation.java
+    │           │   ├── Item.java
+    │           │   ├── ItemImage.java
+    │           │   ├── ItemTransactionFeedback.java
+    │           │   ├── Mentor.java
+    │           │   ├── Message.java
+    │           │   ├── Notification.java
+    │           │   ├── NotificationType.java
+    │           │   ├── Report.java
+    │           │   ├── ReportType.java
+    │           │   ├── Role.java
+    │           │   ├── SessionFeedback.java
+    │           │   ├── SessionRequest.java
+    │           │   ├── SessionRequestStatus.java
+    │           │   ├── Transaction.java
+    │           │   ├── TransactionStatus.java
+    │           │   ├── User.java
+    │           │   ├── UserRole.java (optional if using @ManyToMany)
+    │           │   └── UserRoleId.java (if UserRole is used as a separate entity)
+
+    │           ├── repository
+    │           │   ├── CategoryRepository.java
+    │           │   ├── ChatRepository.java (if needed)
+    │           │   ├── ConversationRepository.java
+    │           │   ├── ItemRepository.java
+    │           │   ├── ItemImageRepository.java
+    │           │   ├── MentorRepository.java
+    │           │   ├── MessageRepository.java
+    │           │   ├── NotificationRepository.java
+    │           │   ├── ReportRepository.java
+    │           │   ├── RoleRepository.java (optional)
+    │           │   ├── SessionFeedbackRepository.java
+    │           │   ├── SessionRequestRepository.java
+    │           │   ├── TransactionRepository.java
+    │           │   ├── UserRepository.java
+    │           │   └── UserRoleRepository.java (optional)
+
+    │           ├── service
+    │           │   ├── ChatService.java
+    │           │   ├── ItemService.java (optional)
+    │           │   ├── MentorService.java
+    │           │   ├── NotificationService.java
+    │           │   ├── ReportService.java (optional)
+    │           │   ├── SessionFeedbackService.java
+    │           │   ├── SessionRequestService.java
+    │           │   ├── TransactionService.java (optional)
+    │           │   └── UserService.java (optional)
+
+    │           └── service/impl
+    │               ├── ChatServiceImpl.java
+    │               ├── MentorServiceImpl.java
+    │               ├── NotificationServiceImpl.java
+    │               ├── SessionFeedbackServiceImpl.java
+    │               ├── SessionRequestServiceImpl.java
+    │               └── UserServiceImpl.java (if needed)
+
+    └── resources
+        ├── application.properties
+        └── static/ (optional for frontend assets)
+        └── templates/ (if using Thymeleaf)
