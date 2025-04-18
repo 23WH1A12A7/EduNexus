@@ -1,0 +1,71 @@
+package com.edunexus.entity;
+
+import jakarta.persistence.*;
+
+@Entity
+@Table(name = "mentors")
+public class Mentor {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "mentor_id")
+    private int mentorId;
+
+    @OneToOne
+    @JoinColumn(name = "user_id")
+    private User user;
+
+    private String expertiseArea;
+    private String bio;
+    private String availability;
+
+    // Constructors, Getters, and Setters
+    public Mentor() {}
+
+    public Mentor(User user, String expertiseArea, String bio, String availability) {
+        this.user = user;
+        this.expertiseArea = expertiseArea;
+        this.bio = bio;
+        this.availability = availability;
+    }
+
+    public int getMentorId() {
+        return mentorId;
+    }
+
+    public void setMentorId(int mentorId) {
+        this.mentorId = mentorId;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public String getExpertiseArea() {
+        return expertiseArea;
+    }
+
+    public void setExpertiseArea(String expertiseArea) {
+        this.expertiseArea = expertiseArea;
+    }
+
+    public String getBio() {
+        return bio;
+    }
+
+    public void setBio(String bio) {
+        this.bio = bio;
+    }
+
+    public String getAvailability() {
+        return availability;
+    }
+
+    public void setAvailability(String availability) {
+        this.availability = availability;
+    }
+}

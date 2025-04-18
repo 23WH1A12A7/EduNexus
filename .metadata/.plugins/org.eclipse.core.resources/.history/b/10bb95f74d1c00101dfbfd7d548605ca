@@ -1,0 +1,81 @@
+package com.edunexus.entity;
+
+import jakarta.persistence.*;
+
+@Entity
+public class Item {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int itemId;
+
+    private String itemName;
+    private String description;
+    private String imageUrl;
+    private String itemStatus;
+
+    @ManyToOne
+    @JoinColumn(name = "category_id")
+    private Category category;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User owner;
+
+    // Getters and Setters
+    public int getItemId() {
+        return itemId;
+    }
+
+    public void setItemId(int itemId) {
+        this.itemId = itemId;
+    }
+
+    public String getItemName() {
+        return itemName;
+    }
+
+    public void setItemName(String itemName) {
+        this.itemName = itemName;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
+
+    public String getItemStatus() {
+        return itemStatus;
+    }
+
+    public void setItemStatus(String itemStatus) {
+        this.itemStatus = itemStatus;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
+
+    public User getOwner() {
+        return owner;
+    }
+
+    public void setOwner(User owner) {
+        this.owner = owner;
+    }
+}

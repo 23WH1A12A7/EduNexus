@@ -1,0 +1,67 @@
+package com.edunexus.controller;
+
+import com.edunexus.model.Course;
+import com.edunexus.service.CourseService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+@CrossOrigin(origins = "*")
+@RestController
+@RequestMapping("/api/courses")
+public class CourseController {
+
+    @Autowired
+    private CourseService courseService;
+
+    @GetMapping
+    public List<Course> getAllCourses() {
+        return courseService.getAllCourses();
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<Course> getCourseById(@PathVariable Long id) {
+        return ResponseEntity.ok(courseService.getCourseById(id));
+    }
+
+    @PostMapping("/instructor/{instructorId}")
+    public ResponseEntity<Course> createCourse(@RequestBody Course course, 
+                                             @PathVariable Long instructorId) {
+        return ResponseEntity.ok(courseService.createCourse(course, instructorId));
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Course> updateCourse(@PathVariable Long id, 
+                                             @RequestBody Course courseDetails) {
+        return ResponseEntity.ok(courseService.updateCourse(id, courseDetails));
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> deleteCourse(@PathVariable Long id) {
+        courseService.deleteCourse(id);
+        return ResponseEntity.ok().build();
+    }
+
+    @PostMapping("/{courseId}/enroll/{studentId}")
+    public ResponseEntity<Course> enrollStudent(@PathVariable Long courseId, 
+                                              @PathVariable Long studentId) {
+        return ResponseEntity.ok(courseService.enrollStudent(courseId, studentId));
+    }
+
+    @GetMapping("/instructor/{instructorId}")
+    public List<Course> getCoursesByInstructor(@PathVariable Long instructorId) {
+        return courseService.getCoursesByInstructor(instructorId);
+    }
+
+    @GetMapping("/student/{studentId}")
+    public List<Course> getEnrolledCourses(@PathVariable Long studentId) {
+        return courseService.getEnrolledCourses(studentId);
+    }
+
+    @GetMapping("/search")
+    public List<Course> searchCourses(@RequestParam String keyword) {
+        return courseService.searchCourses(keyword);
+    }
+}

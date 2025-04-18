@@ -1,0 +1,77 @@
+package com.edunexus.service;
+
+import com.edunexus.model.Course;
+import com.edunexus.model.User;
+import com.edunexus.repository.CourseRepository;
+import com.edunexus.repository.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import java.util.List;
+
+@Service
+public class CourseServiceImpl implements CourseService {
+
+    @Autowired
+    private CourseRepository courseRepository;
+
+    @Autowired
+    private UserRepository userRepository;
+
+    @Override
+    public Course createCourse(Course course, Long instructorId) {
+        User instructor = userRepository.findById(instructorId)
+            .orElseThrow(() -> new RuntimeException("Error: Instructor not found."));
+        course.setInstructor(instructor);
+        return courseRepository.save(course);
+    }
+
+    @Override
+    public Course getCourseById(Long id) {
+        return courseRepository.findById(id)
+            .orElseThrow(() -> new RuntimeException("Error: Course not found."));
+    }
+
+    @Override
+    public List<Course> getAllCourses() {
+        return courseRepository.findAll();
+    }
+
+    @Override
+    public List<Course> getCoursesByInstructor(Long instructorId) {
+        return courseRepository.findByInstructorId(instructorId);
+    }
+
+    @Override
+    public List<Course> getEnrolledCourses(Long studentId) {
+        return courseRepository.findByEnrolledStudentsId(studentId);
+    }
+
+    @Override
+    public Course updateCourse(Long id, Course courseDetails) {
+        Course course = getCourseById(id);
+        course.setTitle(courseDetails.getTitle());
+        course.setDescription(courseDetails.getDescription());
+        return courseRepository.save(course);
+    }
+
+    @Override
+    public void deleteCourse(Long id) {
+        Course course = getCourseById(id);
+        courseRepository.delete(course);
+    }
+
+    @Override
+    public Course enrollStudent(Long courseId, Long studentId) {
+        Course course = getCourseById(courseId);
+        User student = userRepository.findById(studentId)
+            .orElseThrow(() -> new RuntimeException("Error: Student not found."));
+        
+        course.getEnrolledStudents().add(student);
+        return courseRepository.save(course);
+    }
+
+    @Override
+    public List<Course> searchCourses(String keyword) {
+        return courseRepository.searchCourses(keyword);
+    }
+}

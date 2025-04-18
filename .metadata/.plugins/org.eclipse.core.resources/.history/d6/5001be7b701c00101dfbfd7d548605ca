@@ -1,0 +1,28 @@
+package com.edunexus.controller;
+
+import com.edunexus.entity.Mentor;
+import com.edunexus.service.MentorService;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+@RestController
+@RequestMapping("/api/mentors")
+public class MentorController {
+
+    private final MentorService mentorService;
+
+    public MentorController(MentorService mentorService) {
+        this.mentorService = mentorService;
+    }
+
+    @GetMapping("/search")
+    public List<Mentor> search(@RequestParam String expertise) {
+        return mentorService.searchMentors(expertise);
+    }
+
+    @GetMapping("/user/{userId}")
+    public Mentor getMentorByUser(@PathVariable int userId) {
+        return mentorService.getMentorByUserId(userId);
+    }
+}

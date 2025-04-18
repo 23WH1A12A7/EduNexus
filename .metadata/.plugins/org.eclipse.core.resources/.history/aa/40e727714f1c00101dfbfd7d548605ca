@@ -1,0 +1,15 @@
+package com.edunexus.repository;
+
+import com.edunexus.entity.Mentor;
+
+import java.util.List;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface MentorRepository extends JpaRepository<Mentor, Long> {
+    // Find mentors by area of expertise or other attributes
+    List<Mentor> findByExpertise(String expertise);
+    List<Mentor> findByLocation(String location);
+}

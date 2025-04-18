@@ -1,0 +1,5 @@
+package com.edunexus.controller;
+
+public class UserController {
+
+}

@@ -1,0 +1,11 @@
+package com.edunexus.repository;
+
+import com.edunexus.entity.Mentor;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import java.util.List;
+
+public interface MentorRepository extends JpaRepository<Mentor, Integer> {
+    List<Mentor> findByExpertiseAreaContainingIgnoreCase(String expertise);
+    Mentor findByUser_Id(int userId);
+}

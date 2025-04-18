@@ -1,0 +1,5 @@
+package com.edunexus.entity;
+
+public class SessionRequest {
+
+}

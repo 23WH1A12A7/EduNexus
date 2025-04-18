@@ -1,0 +1,33 @@
+package com.edunexus.controller;
+
+import com.edunexus.entity.Mentor;
+import com.edunexus.repository.MentorRepository;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+@RestController
+@RequestMapping("/api/mentors")
+public class MentorController {
+
+    private final MentorRepository mentorRepository;
+
+    // Constructor-based injection (recommended)
+    public MentorController(MentorRepository mentorRepository) {
+        this.mentorRepository = mentorRepository;
+    }
+
+    @PostMapping("/create")
+    public Mentor createMentor(@RequestBody Mentor mentor) {
+        return mentorRepository.save(mentor);
+    }
+
+    @GetMapping("/search")
+    public List<Mentor> search(@RequestParam String expertise) {
+        return mentorRepository.findByExpertiseAreaContainingIgnoreCase(expertise);
+    }
+
+    @GetMapping("/user/{userId}")
+    public Mentor getMentorByUser(@PathVariable int userId) {
+        return mentorRepository.findByUserId(userId);
+    }

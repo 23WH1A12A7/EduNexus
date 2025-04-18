@@ -1,0 +1,86 @@
+package com.edunexus.entity;
+
+import jakarta.persistence.*;
+import java.time.LocalDateTime;
+
+@Entity
+@Table(name = "session_requests")
+public class SessionRequest {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "request_id")
+    private int requestId;
+
+    @ManyToOne
+    @JoinColumn(name = "mentor_id", referencedColumnName = "mentor_id")
+    private Mentor mentor;
+
+    @ManyToOne
+    @JoinColumn(name = "mentee_id")
+    private User mentee;
+
+    private String topic;
+    private LocalDateTime requestedDateTime;
+
+    @Enumerated(EnumType.STRING)
+    private SessionRequestStatus status;
+
+    public SessionRequest() {}
+
+    public SessionRequest(Mentor mentor, User mentee, String topic, LocalDateTime requestedDateTime, SessionRequestStatus status) {
+        this.mentor = mentor;
+        this.mentee = mentee;
+        this.topic = topic;
+        this.requestedDateTime = requestedDateTime;
+        this.status = status;
+    }
+
+    public int getRequestId() {
+        return requestId;
+    }
+
+    public void setRequestId(int requestId) {
+        this.requestId = requestId;
+    }
+
+    public Mentor getMentor() {
+        return mentor;
+    }
+
+    public void setMentor(Mentor mentor) {
+        this.mentor = mentor;
+    }
+
+    public User getMentee() {
+        return mentee;
+    }
+
+    public void setMentee(User mentee) {
+        this.mentee = mentee;
+    }
+
+    public String getTopic() {
+        return topic;
+    }
+
+    public void setTopic(String topic) {
+        this.topic = topic;
+    }
+
+    public LocalDateTime getRequestedDateTime() {
+        return requestedDateTime;
+    }
+
+    public void setRequestedDateTime(LocalDateTime requestedDateTime) {
+        this.requestedDateTime = requestedDateTime;
+    }
+
+    public SessionRequestStatus getStatus() {
+        return status;
+    }
+
+    public void setStatus(SessionRequestStatus status) {
+        this.status = status;
+    }
+}

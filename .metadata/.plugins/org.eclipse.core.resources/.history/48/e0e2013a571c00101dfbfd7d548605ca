@@ -1,0 +1,5 @@
+package com.edunexus.repository;
+
+public interface SessionFeedbackRepository {
+
+}
