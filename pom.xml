@@ -5,6 +5,7 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
+<<<<<<< HEAD
 		<version>3.4.5</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
@@ -13,6 +14,16 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<name>edunexus</name>
 	<description>EduNexus-PeerConnect</description>
+=======
+		<version>3.4.4</version>
+		<relativePath/> <!-- lookup parent from repository -->
+	</parent>
+	<groupId>com.edunexus</groupId>
+	<artifactId>mentorship</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>mentorship</name>
+	<description>SpringBoot Edu-Nexus Project</description>
+>>>>>>> ad2a8fb22bdbc8cf0d02a3ce3635b178a80a709d
 	<url/>
 	<licenses>
 		<license/>
@@ -30,6 +41,29 @@
 		<java.version>17</java.version>
 	</properties>
 	<dependencies>
+<<<<<<< HEAD
+=======
+				<!-- Swagger OpenAPI dependency -->
+		<dependency>
+		    <groupId>org.springdoc</groupId>
+		    <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+		    <version>2.1.0</version>
+		</dependency>
+
+	    <!-- Spring Security -->
+	    <dependency>
+	        <groupId>org.springframework.boot</groupId>
+	        <artifactId>spring-boot-starter-security</artifactId>
+	    </dependency>
+	    
+	    
+	    <!-- Spring Boot Starter Web for REST API -->
+	    <dependency>
+	        <groupId>org.springframework.boot</groupId>
+	        <artifactId>spring-boot-starter-web</artifactId>
+	    </dependency>
+
+>>>>>>> ad2a8fb22bdbc8cf0d02a3ce3635b178a80a709d
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
@@ -38,6 +72,15 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
+<<<<<<< HEAD
+=======
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web-services</artifactId>
+		</dependency>
+
+		
+>>>>>>> ad2a8fb22bdbc8cf0d02a3ce3635b178a80a709d
 
 		<dependency>
 			<groupId>com.mysql</groupId>
@@ -45,6 +88,14 @@
 			<scope>runtime</scope>
 		</dependency>
 		<dependency>
+<<<<<<< HEAD
+=======
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<optional>true</optional>
+		</dependency>
+		<dependency>
+>>>>>>> ad2a8fb22bdbc8cf0d02a3ce3635b178a80a709d
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
@@ -54,8 +105,33 @@
 	<build>
 		<plugins>
 			<plugin>
+<<<<<<< HEAD
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+=======
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<annotationProcessorPaths>
+						<path>
+							<groupId>org.projectlombok</groupId>
+							<artifactId>lombok</artifactId>
+						</path>
+					</annotationProcessorPaths>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+					<excludes>
+						<exclude>
+							<groupId>org.projectlombok</groupId>
+							<artifactId>lombok</artifactId>
+						</exclude>
+					</excludes>
+				</configuration>
+>>>>>>> ad2a8fb22bdbc8cf0d02a3ce3635b178a80a709d
 			</plugin>
 		</plugins>
 	</build>
