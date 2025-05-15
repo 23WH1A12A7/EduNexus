@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
@@ -68,3 +69,7 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+=======
+# EduNexus
+ This web platform will allow students to buy, sell, or exchange academic items like books, drafters, calculators, and laptops. Additionally, it will feature student counseling and mentorship, where juniors can connect with seniors for career guidance, mental health support, and academic advice.
+>>>>>>> b682c3ce9350fdf262a85d1e9b1a0575010d6ac8
