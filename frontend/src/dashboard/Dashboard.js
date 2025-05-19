@@ -5,7 +5,7 @@ import ItemExchange from './ItemExchange';
 import Mentorship from './Mentorship';
 import Reviews from './Reviews';
 import Messages from './Messages';
-import Profile from './Profile';
+import Profile from './profile';
 import './Dashboard.css';
 
 const Dashboard = () => {

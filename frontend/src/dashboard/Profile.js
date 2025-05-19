@@ -23,7 +23,7 @@
 import React from 'react';
 import { Player } from '@lottiefiles/react-lottie-player';
 import animationData from '../assets/ProfileAnimation.json'; // Adjust the path as needed
-import './Profile.css';
+import './profile.css';
 
 const Profile = () => {
   const user = JSON.parse(localStorage.getItem('user'));
