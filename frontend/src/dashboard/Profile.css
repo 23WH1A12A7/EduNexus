@@ -1,0 +1,13 @@
+.profile-wrapper {
+  background-color: #FFFACD; /* Butter Yellow */
+  min-height: 100vh;
+  padding: 20px;
+  position: relative;
+}
+
+.lottie-animation {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  z-index: 10;
+}
