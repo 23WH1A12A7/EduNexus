@@ -1,83 +1,55 @@
 package com.edunexus.model;
 
-import jakarta.persistence.*;
-import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 
 @Entity
-@Table(name = "users")
 public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "user_id")
-    private Long userId;
+    private Long id;
 
-    @Column(unique = true, nullable = false)
-    private String username;
-
-    @Column(nullable = false)
-    private String password;
-
-    @Column(unique = true, nullable = false)
+    private String name;
     private String email;
+    private String password;
+    private String branch;
+    private String role; // student or senior
+    private String interests;
 
-    @Column(name = "full_name")
-    private String fullName;
-
-    private String major;
-    private String yearOfStudy;
-    private String contactInfo;
-
-    @Column(name = "registration_date", nullable = false, updatable = false)
-    private LocalDateTime registrationDate = LocalDateTime.now();
-
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<MentorArea> mentorAreas = new ArrayList<>();
-
-    @OneToMany(mappedBy = "junior", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<MentorshipRequest> mentorshipRequestsAsJunior = new ArrayList<>();
-
-    @OneToMany(mappedBy = "mentor", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<MentorshipRequest> mentorshipRequestsAsMentor = new ArrayList<>();
-
+    // No-Args Constructor
     public User() {
     }
 
-    public User(String username, String password, String email, String fullName, String major, String yearOfStudy, String contactInfo) {
-        this.username = username;
-        this.password = password;
+    // All-Args Constructor
+    public User(Long id, String name, String email, String password, String branch, String role, String interests) {
+        this.id = id;
+        this.name = name;
         this.email = email;
-        this.fullName = fullName;
-        this.major = major;
-        this.yearOfStudy = yearOfStudy;
-        this.contactInfo = contactInfo;
+        this.password = password;
+        this.branch = branch;
+        this.role = role;
+        this.interests = interests;
     }
 
     // Getters and Setters
-    public Long getUserId() {
-        return userId;
+
+    public Long getId() {
+        return id;
     }
 
-    public void setUserId(Long userId) {
-        this.userId = userId;
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    public String getUsername() {
-        return username;
+    public String getName() {
+        return name;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getEmail() {
@@ -88,67 +60,35 @@ public class User {
         this.email = email;
     }
 
-    public String getFullName() {
-        return fullName;
+    public String getPassword() {
+        return password;
     }
 
-    public void setFullName(String fullName) {
-        this.fullName = fullName;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
-    public String getMajor() {
-        return major;
+    public String getBranch() {
+        return branch;
     }
 
-    public void setMajor(String major) {
-        this.major = major;
+    public void setBranch(String branch) {
+        this.branch = branch;
     }
 
-    public String getYearOfStudy() {
-        return yearOfStudy;
+    public String getRole() {
+        return role;
     }
 
-    public void setYearOfStudy(String yearOfStudy) {
-        this.yearOfStudy = yearOfStudy;
+    public void setRole(String role) {
+        this.role = role;
     }
 
-    public String getContactInfo() {
-        return contactInfo;
+    public String getInterests() {
+        return interests;
     }
 
-    public void setContactInfo(String contactInfo) {
-        this.contactInfo = contactInfo;
-    }
-
-    public LocalDateTime getRegistrationDate() {
-        return registrationDate;
-    }
-
-    public void setRegistrationDate(LocalDateTime registrationDate) {
-        this.registrationDate = registrationDate;
-    }
-
-    public List<MentorArea> getMentorAreas() {
-        return mentorAreas;
-    }
-
-    public void setMentorAreas(List<MentorArea> mentorAreas) {
-        this.mentorAreas = mentorAreas;
-    }
-
-    public List<MentorshipRequest> getMentorshipRequestsAsJunior() {
-        return mentorshipRequestsAsJunior;
-    }
-
-    public void setMentorshipRequestsAsJunior(List<MentorshipRequest> mentorshipRequestsAsJunior) {
-        this.mentorshipRequestsAsJunior = mentorshipRequestsAsJunior;
-    }
-
-    public List<MentorshipRequest> getMentorshipRequestsAsMentor() {
-        return mentorshipRequestsAsMentor;
-    }
-
-    public void setMentorshipRequestsAsMentor(List<MentorshipRequest> mentorshipRequestsAsMentor) {
-        this.mentorshipRequestsAsMentor = mentorshipRequestsAsMentor;
+    public void setInterests(String interests) {
+        this.interests = interests;
     }
 }

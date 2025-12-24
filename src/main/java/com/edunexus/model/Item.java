@@ -1,72 +1,56 @@
 package com.edunexus.model;
 
 import jakarta.persistence.*;
-import java.math.BigDecimal;
-import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "items")
+@Table(name = "item")
 public class Item {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "item_id")
-    private Long itemId;
+    private Long id;
 
-    @Column(name = "seller_id", nullable = false)
-    private Long sellerId;
-
-    @Column(nullable = false)
-    private String title;
+    @Column(name = "item_name")
+    private String itemName;
 
     private String description;
-    private String category;
-    private String subject;
-    private BigDecimal price;
-    private String condition;
+    private String status;
+    private double price;
 
-    @Column(name = "upload_date", nullable = false, updatable = false)
-    private LocalDateTime uploadDate = LocalDateTime.now();
+    @Column(name = "owner_id]]")
+    private Long ownerId;
 
-    private String status; // Changed from ENUM to String for simplicity
+    private String title;     // ✅ Add title
+    private String category;  // ✅ Add category
 
-    // Constructors, Getters, and Setters
     public Item() {
     }
 
-    public Item(Long sellerId, String title, String description, String category, String subject, BigDecimal price, String condition, String status) {
-        this.sellerId = sellerId;
-        this.title = title;
+    public Item(Long id, String itemName, String description, String status, double price, Long ownerId, String title, String category) {
+        this.id = id;
+        this.itemName = itemName;
         this.description = description;
-        this.category = category;
-        this.subject = subject;
-        this.price = price;
-        this.condition = condition;
         this.status = status;
-    }
-
-    public Long getItemId() {
-        return itemId;
-    }
-
-    public void setItemId(Long itemId) {
-        this.itemId = itemId;
-    }
-
-    public Long getSellerId() {
-        return sellerId;
-    }
-
-    public void setSellerId(Long sellerId) {
-        this.sellerId = sellerId;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
+        this.price = price;
+        this.ownerId = ownerId;
         this.title = title;
+        this.category = category;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getItemName() {
+        return itemName;
+    }
+
+    public void setItemName(String itemName) {
+        this.itemName = itemName;
     }
 
     public String getDescription() {
@@ -77,51 +61,43 @@ public class Item {
         this.description = description;
     }
 
-    public String getCategory() {
-        return category;
-    }
-
-    public void setCategory(String category) {
-        this.category = category;
-    }
-
-    public String getSubject() {
-        return subject;
-    }
-
-    public void setSubject(String subject) {
-        this.subject = subject;
-    }
-
-    public BigDecimal getPrice() {
-        return price;
-    }
-
-    public void setPrice(BigDecimal price) {
-        this.price = price;
-    }
-
-    public String getCondition() {
-        return condition;
-    }
-
-    public void setCondition(String condition) {
-        this.condition = condition;
-    }
-
-    public LocalDateTime getUploadDate() {
-        return uploadDate;
-    }
-
-    public void setUploadDate(LocalDateTime uploadDate) {
-        this.uploadDate = uploadDate;
-    }
-
     public String getStatus() {
         return status;
     }
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
+    public Long getOwnerId() {
+        return ownerId;
+    }
+
+    public void setOwnerId(Long ownerId) {
+        this.ownerId = ownerId;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
     }
 }

@@ -1,68 +1,60 @@
 package com.edunexus.model;
 
 import jakarta.persistence.*;
-import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "reviews")
+@Table(name = "review")
 public class Review {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "review_id")
-    private Long reviewId;
+    private Long id;
 
-    @ManyToOne
-    @JoinColumn(name = "reviewer_id", nullable = false)
-    private User reviewer;
-
-    @ManyToOne
-    @JoinColumn(name = "reviewed_user_id", nullable = false)
-    private User reviewedUser;
-
-    @Column(nullable = false)
+    private Long reviewerId;
+    private Long reviewedUserId;
+    private String content;
     private int rating;
 
-    private String comment;
+    public Review() {}
 
-    @Column(name = "review_date", nullable = false, updatable = false)
-    private LocalDateTime reviewDate = LocalDateTime.now();
-
-    private String interactionType; // Changed from ENUM to String for simplicity
-
-    public Review() {
-    }
-
-    public Review(User reviewer, User reviewedUser, int rating, String comment, String interactionType) {
-        this.reviewer = reviewer;
-        this.reviewedUser = reviewedUser;
+    public Review(Long id, Long reviewerId, Long reviewedUserId, String content, int rating) {
+        this.id = id;
+        this.reviewerId = reviewerId;
+        this.reviewedUserId = reviewedUserId;
+        this.content = content;
         this.rating = rating;
-        this.comment = comment;
-        this.interactionType = interactionType;
     }
 
-    public Long getReviewId() {
-        return reviewId;
+    public Long getId() {
+        return id;
     }
 
-    public void setReviewId(Long reviewId) {
-        this.reviewId = reviewId;
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    public User getReviewer() {
-        return reviewer;
+    public Long getReviewerId() {
+        return reviewerId;
     }
 
-    public void setReviewer(User reviewer) {
-        this.reviewer = reviewer;
+    public void setReviewerId(Long reviewerId) {
+        this.reviewerId = reviewerId;
     }
 
-    public User getReviewedUser() {
-        return reviewedUser;
+    public Long getReviewedUserId() {
+        return reviewedUserId;
     }
 
-    public void setReviewedUser(User reviewedUser) {
-        this.reviewedUser = reviewedUser;
+    public void setReviewedUserId(Long reviewedUserId) {
+        this.reviewedUserId = reviewedUserId;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
     }
 
     public int getRating() {
@@ -71,29 +63,5 @@ public class Review {
 
     public void setRating(int rating) {
         this.rating = rating;
-    }
-
-    public String getComment() {
-        return comment;
-    }
-
-    public void setComment(String comment) {
-        this.comment = comment;
-    }
-
-    public LocalDateTime getReviewDate() {
-        return reviewDate;
-    }
-
-    public void setReviewDate(LocalDateTime reviewDate) {
-        this.reviewDate = reviewDate;
-    }
-
-    public String getInteractionType() {
-        return interactionType;
-    }
-
-    public void setInteractionType(String interactionType) {
-        this.interactionType = interactionType;
     }
 }
